@@ -731,6 +731,10 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
           Popup.popupWindow.addEventListener('loaderror', function() {
             deferred.reject('Authorization Failed');
           });
+          
+          Popup.popupWindow.addEventListener('exit', function(event) {
+              deferred.reject("The sign in flow was canceled");
+          });
 
           return deferred.promise;
         };
